@@ -1,0 +1,33 @@
+{
+  "name": "appseed-cli",
+  "version": "0.0.1",
+  "description": "Powefull CLI for automaticly generate Appsed template projects and deploy them easily.",
+  "main": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "cli",
+    "create-project"
+  ],
+  "author": "Saponciou",
+  "dependencies": {
+    "arg": "^4.1.0",
+    "chalk": "^2.4.2",
+    "covgen": "^3.1.0",
+    "esm": "^3.2.18",
+    "execa": "^1.0.0",
+    "gitignore": "^0.6.0",
+    "inquirer": "^6.2.2",
+    "inquirer-press-to-continue": "^1.1.4",
+    "listr": "^0.14.3",
+    "ncp": "^2.0.0",
+    "pkg-install": "^0.2.0",
+    "spdx-license-list": "^5.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "templates/"
+  ]
+}
