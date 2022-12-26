@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Powefull CLI for automaticly generate Appsed template projects and deploy them easily.",
   "main": "src/index.js",
+  "typle": "module",
   "keywords": [
     "appseed",
     "cli",
@@ -24,8 +25,12 @@
     "spdx-license-list": "^5.0.0"
   },
   "files": [
-    "bin/",
-    "src/",
-    "templates/"
-  ]
+    "src/"
+  ],
+  "bin": {
+    "appseed-cli": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  }
 }
