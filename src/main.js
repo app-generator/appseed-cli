@@ -14,6 +14,10 @@ async function showHelpAfterFinishing(options) {
     // get current os
     const os = require('os');
     const currentOS = os.platform();
+
+    // get if its flask or django
+    const isFlask = options.template.includes('flask');
+    const isDjango = options.template.includes('django');
     // if windows
     if (options.docker) {
         console.log(`
@@ -28,6 +32,7 @@ ${chalk.green.bold(' Next Steps: ')}
     }
     else {
         if (currentOS === 'win32') {
+            if (isFlask) {
         console.log(`
 
 ${chalk.green.bold(' Next Steps: ')}
@@ -55,6 +60,24 @@ ${chalk.green.bold(' Next Steps: ')}
 
 
         `);
+        }
+        else if (isDjango) {
+            console.log(`
+
+${chalk.green.bold(' Next Steps: ')}
+
+    # Install dependencies
+    ${chalk.yellow.bold('cd')} ${chalk.white.italic(options.folderName)}
+    ${chalk.yellow.bold('virtualenv env')}
+    ${chalk.yellow.bold('.\\env\\Scripts\\activate')}
+    ${chalk.yellow.bold('pip install -r requirements.txt')}
+
+    # Run the app
+    ${chalk.yellow.bold('python manage.py runserver')}
+
+    And open your browser at: ${chalk.blue.italic('http://localhost:8000')}
+
+    `);
         }
         if (currentOS === 'linux' || currentOS === 'darwin' || currentOS === 'freebsd') {
     console.log(`
@@ -110,7 +133,7 @@ export async function createProject(options) {
         }
     );
     await tasks.run();
-    console.log('%s Project ready!', chalk.green.bold('  ✔  DONE'));
+    console.log('%s Project ready!', chalk.green.bold('DONE'));
     await showHelpAfterFinishing(options);
     return true;
 }

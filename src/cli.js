@@ -76,7 +76,7 @@ async function promptForMissingOptions(options) {
     };
 }
 function printHelp() {
-    console.log('APPSEED CLI - Made with ❤️  by Saponciou');
+    console.log('APPSEED CLI - Made with ❤️ by Saponciou');
     console.log('Usage: appseed-cli [options]');
     console.log('Options:');
     console.log('  -t, --template <template>  Template to use for the project');
