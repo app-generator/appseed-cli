@@ -21,10 +21,12 @@ Simplify the instalation of a appseed (app-generator) project template.
 
 1 - Download the **last** release.
 
-2 - **Unzip** it and go to the folder.
+2 - Follow the instructions on the release page.
 
-3 - Run `npm i`
+3 - Enjoy!
 
-4 - Run `node src/index.js`
+## News🗞️
 
-*// TODO: Make a portable executable for dont have to use any node.js installation.*
+```
++ Updated to RUST
+```
