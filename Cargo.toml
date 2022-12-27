@@ -8,3 +8,5 @@ edition = "2021"
 [dependencies]
 colored = "2.0.0"
 dialoguer = "0.10.2"
+indicatif = "0.17.2"
+
