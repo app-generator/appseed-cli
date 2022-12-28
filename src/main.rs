@@ -18,7 +18,12 @@ fn main() {
     let templates = vec!["flask-datta-able", "django-datta-able", "django-volt-dashboard", "flask-volt-dashboard"];
 
     let theme = ColorfulTheme::default();
-
+    
+    // if args length is 1, then no args were passed so help message is displayed
+    if args.len() == 1 {
+        print_help();
+        std::process::exit(0);
+    }
     if args.contains(&"--docker".to_string()) || args.contains(&"-d".to_string()) {
         use_docker = true;
     }
