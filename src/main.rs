@@ -41,9 +41,34 @@ fn main() {
         std::process::exit(0);
     }
     if args.contains(&String::from("--list")) || args.contains(&String::from("-l")) {
-        println!("{}", "Available templates:".green());
+        println!("{}", "Available templates:".yellow());
+        let mut flask_templates = vec![];
+        let mut django_templates = vec![];
+        let mut other_templates = vec![];
         for template in templates {
-            println!(" {} {}", "->".italic().blue(), template);
+            if template.contains("flask"){
+                flask_templates.push(template);
+            }
+            else if template.contains("django"){
+                django_templates.push(template);
+            }
+            else{
+                other_templates.push(template);
+            }
+        }
+        println!("  {}", "Flask".blue());
+        for template in flask_templates {
+            println!("    {} {}","->".italic().blue(), template.green());
+        }
+        println!("  {}", "Django".blue());
+        for template in django_templates {
+            println!("    {} {}","->".italic().blue(), template.green());
+        }
+        if other_templates.len() > 0 {
+            println!("  {}", "Other".blue());
+            for template in other_templates {
+                println!("    {} {}","->".italic().blue(), template.green());
+            }
         }
         std::process::exit(0);
     }
