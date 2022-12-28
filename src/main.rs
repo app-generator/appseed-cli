@@ -15,7 +15,7 @@ fn main() {
     let mut use_docker = false;
     let mut template_name = "default".to_string();
     let mut folder_name = "default".to_string();
-    let templates = vec!["flask-datta-able", "django-datta-able", "django-volt-dashboard", "flask-volt-dashboard"];
+    let templates = vec!["flask-datta-able", "django-datta-able", "django-volt-dashboard", "flask-volt-dashboard", "flask-adminlte", "django-soft-ui-dashboard"];
 
     let theme = ColorfulTheme::default();
     
@@ -38,6 +38,13 @@ fn main() {
     // Check for the help flag
     if args.contains(&String::from("--help")) || args.contains(&String::from("-h")) {
         print_help();
+        std::process::exit(0);
+    }
+    if args.contains(&String::from("--list")) || args.contains(&String::from("-l")) {
+        println!("{}", "Available templates:".green());
+        for template in templates {
+            println!(" {} {}", "->".italic().blue(), template);
+        }
         std::process::exit(0);
     }
     // check if template name is valid or is default
@@ -130,6 +137,7 @@ fn help_after_finish(use_docker: bool, template: String, folder_name: String) {
 
     let is_flask = template.contains("flask");
     let is_django = template.contains("django");
+    let template_url = format!("https://github.com/app-generator/{}", template);
     println!(" {}", "Next steps:".bold().green());
     println!("");
     if use_docker {
@@ -161,6 +169,13 @@ fn help_after_finish(use_docker: bool, template: String, folder_name: String) {
             }
             if is_django {
                 println!("");
+                println!("    # Setup the Database");
+                println!("    {}", "python manage.py makemigrations".bold().yellow());
+                println!("    {}", "python manage.py migrate".bold().yellow());
+                if template.contains("soft-ui"){
+                    println!("    {} # Optional", "python manage.py generate-api".bold().yellow());
+                }
+                println!("");
                 println!("    # Run");
                 println!("    {}", "python manage.py runserver".bold().yellow());
                 println!("    {} {}", "And open your browser at:".italic().blue(), "http://localhost:8000");
@@ -186,6 +201,9 @@ fn help_after_finish(use_docker: bool, template: String, folder_name: String) {
                 println!("    # Setup the Database");
                 println!("    {}", "python manage.py makemigrations".bold().yellow());
                 println!("    {}", "python manage.py migrate".bold().yellow());
+                if template.contains("soft-ui"){
+                    println!("    {} # Optional", "python manage.py generate-api".bold().yellow());
+                }
                 println!("");
                 println!("    # Run");
                 println!("    {}", "python manage.py runserver".bold().yellow());
@@ -193,4 +211,6 @@ fn help_after_finish(use_docker: bool, template: String, folder_name: String) {
             }
         }
     }
+    println!("");
+    println!("    {} {}", "For more information:".italic().blue(), template_url);
 }
