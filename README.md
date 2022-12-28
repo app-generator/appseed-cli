@@ -14,7 +14,7 @@ Simplify the instalation of a appseed (app-generator) project template.
 
 ## How it works?
 <div align="center">
-    <img src="images/screenshot.png" alt="ScreenShot">
+    <img src="images/screenshot2.png" alt="ScreenShot">
 </div>
 
 ## Installation
